@@ -1,36 +1,32 @@
 from sys import excepthook
 
-P = {
-    1: 1,
-    2: 2,
-    3: 3,
-    4: 4,
-    5: 5,
-    6: 6,
-    7: 7,
-    8: 8,
-    9: 9
-}
-board = {}
-def refresh_board():
-    global board
-    board = f""" ___ ___ ___
-| {P[1]} | {P[2]} | {P[3]} |
+P = [i + 1 for i in range(9)]
+
+def print_board():
+    print(f""" ___ ___ ___
+| {P[0]} | {P[1]} | {P[2]} |
 |___|___|___|
-| {P[4]} | {P[5]} | {P[6]} |
+| {P[3]} | {P[4]} | {P[5]} |
 |___|___|___|
-| {P[7]} | {P[8]} | {P[9]} |
-|___|___|___|"""
+| {P[6]} | {P[7]} | {P[8]} |
+|___|___|___|""")
+
+def switch_player():
+    global current_player
+    if current_player == "X":
+        current_player = "O"
+    else:
+        current_player = "X"
+
+def make_move():
+    user_input = input("Select a position [1-9]")
+    while type(user_input) != int and user_input not in range(1, 9):
+        print("input must be an int between 1 and 9")
+        user_input = input("Select a position [1-9]")
 
 
-
-while True:
-    refresh_board()
-    print(board)
-    try:
-        User_Input = int(input("Please select a number from the board to place an X"))
-        P[User_Input] = 'X'
-    except ValueError:
-        print("Please enter a number 1-10")
-
-
+Game_Over = False
+while not Game_Over:
+    print_board()
+    current_player = "X"
+    make_move()
