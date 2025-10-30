@@ -25,6 +25,13 @@ def collect_user_input():
         print("Must be an integer")
         return None
 
+def check_win(player):
+    #check rows
+    for i in range(3):
+        if P[i] == player and P[i + 1] == player and P[i + 2] == player:
+            return f"Player {player} won!"
+
+
 def make_move(player):
     user_input = collect_user_input()
     if not user_input:
@@ -43,9 +50,14 @@ def switch(player):
         return "X"
 
 Game_Over = False
-print_board()
 current_player = "X"
+print_board()
 while not Game_Over:
+
     if make_move(current_player):
         print_board()
+        if check_win(current_player):
+            Game_Over = True
+            print("END")
+
     current_player = switch(current_player)
