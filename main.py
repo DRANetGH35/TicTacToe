@@ -29,8 +29,12 @@ def check_win(player):
     #check rows
     for i in range(3):
         if P[i] == player and P[i + 1] == player and P[i + 2] == player:
-            return f"Player {player} won!"
-
+            return 1
+    #check columns
+    for i in range(3):
+        if P[i] == player and P[i + 3] == player and P[i + 6] == player:
+            return 1
+    return 0
 
 def make_move(player):
     user_input = collect_user_input()
@@ -56,9 +60,9 @@ while not Game_Over:
 
     if make_move(current_player):
         print_board()
-        current_player = switch(current_player)
         if check_win(current_player):
             Game_Over = True
-            print("END")
+            print(f"{current_player} wins!")
+        current_player = switch(current_player)
 
 
