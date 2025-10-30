@@ -18,20 +18,34 @@ def switch_player():
     else:
         current_player = "X"
 
-def user_input():
+def collect_user_input():
     try:
         return int(input("Select a position [1-9]"))
     except ValueError:
         print("Must be an integer")
         return None
 
-def make_move():
-    while user_input() not in range(1, 9):
+def make_move(player):
+    user_input = collect_user_input()
+    if not user_input:
+        pass
+        return 0
+    if user_input not in range(1, 9):
         print("input must be an int between 1 and 9")
+        return 0
 
+    return 1
+
+def switch(player):
+    if player == "X":
+        return "O"
+    else:
+        return "X"
 
 Game_Over = False
+print_board()
+current_player = "X"
 while not Game_Over:
-    print_board()
-    current_player = "X"
-    make_move()
+    if make_move(current_player:
+        print_board()
+    current_player = switch(current_player)
