@@ -56,8 +56,9 @@ while not Game_Over:
 
     if make_move(current_player):
         print_board()
+        current_player = switch(current_player)
         if check_win(current_player):
             Game_Over = True
             print("END")
 
-    current_player = switch(current_player)
+
