@@ -18,11 +18,16 @@ def switch_player():
     else:
         current_player = "X"
 
+def user_input():
+    try:
+        return int(input("Select a position [1-9]"))
+    except ValueError:
+        print("Must be an integer")
+        return None
+
 def make_move():
-    user_input = input("Select a position [1-9]")
-    while type(user_input) != int and user_input not in range(1, 9):
+    while user_input() not in range(1, 9):
         print("input must be an int between 1 and 9")
-        user_input = input("Select a position [1-9]")
 
 
 Game_Over = False
