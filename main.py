@@ -34,6 +34,10 @@ def check_win(player):
     for i in range(3):
         if P[i] == player and P[i + 3] == player and P[i + 6] == player:
             return 1
+    if P[0] == player and P[4] == player and P[8] == player:
+        return 1
+    if P[2] == player and P[4] == player and P[6] == player:
+        return 1
     return 0
 
 def make_move(player):
@@ -41,7 +45,7 @@ def make_move(player):
     if not user_input:
         pass
         return 0
-    if user_input not in range(1, 9):
+    if user_input not in range(1, 10):
         print("input must be an int between 1 and 9")
         return 0
     P[user_input - 1] = player
