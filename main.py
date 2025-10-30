@@ -1,6 +1,6 @@
 from sys import excepthook
 
-P = [i + 1 for i in range(9)]
+P = [i  for i in range(1, 10)]
 
 def print_board():
     print(f""" ___ ___ ___
@@ -33,7 +33,7 @@ def make_move(player):
     if user_input not in range(1, 9):
         print("input must be an int between 1 and 9")
         return 0
-
+    P[user_input - 1] = player
     return 1
 
 def switch(player):
@@ -46,6 +46,6 @@ Game_Over = False
 print_board()
 current_player = "X"
 while not Game_Over:
-    if make_move(current_player:
+    if make_move(current_player):
         print_board()
     current_player = switch(current_player)
