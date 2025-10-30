@@ -1,5 +1,3 @@
-from sys import excepthook
-
 P = [i  for i in range(1, 10)]
 
 def print_board():
@@ -60,8 +58,8 @@ def switch(player):
 Game_Over = False
 current_player = "X"
 print_board()
-while not Game_Over:
 
+while not Game_Over:
     if make_move(current_player):
         print_board()
         if check_win(current_player):
